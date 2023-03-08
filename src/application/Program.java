@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 import moedel.entities.Reservation;
+import moedel.exceptions.DomainException;
 
 public class Program {
 
@@ -38,8 +39,15 @@ public class Program {
 
 			System.out.println("Reservation: " + reservation);
 			
-		} catch (ParseException e) {
+		} 
+		catch (ParseException e) {
 			System.out.println("Invalid date format");
+		} 
+		catch (DomainException e) {
+			System.out.println("Error in reservation: " + e.getMessage());
+		}
+		catch (RuntimeException e) {
+			System.out.println("Unexpected error!");
 		}
 
 		sc.close();
